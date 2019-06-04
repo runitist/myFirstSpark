@@ -8,11 +8,21 @@
 	이것은 template 기술.
 	<br />
 	<br />
-	이름 : {{name}}
+	이름 : {{user.name}}
 	<br />
 	<br />
-	나이 : {{age}}
+	나이 : {{user.age}}
 	<br />
 	<br />
+	{{#user}}
+	<br />
+	<br />
+	namespace 이름 : {{name}}
+	<br />
+	<br />
+	namespace 나이 : {{age}}
+	<br />
+	<br />
+	{{/user}}
 </body>
 </html>

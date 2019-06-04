@@ -4,26 +4,34 @@ import static spark.Spark.get;
 import static spark.Spark.post;
 import static spark.Spark.staticFiles;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
-public class HtmlSpark {
+public class UserMain {
 	public static void main(String[] args) {
 		staticFiles.location("/static");
+		
+		List<User> users = new ArrayList<User>();
 
-		get("/hello", (req, res) -> {
+		get("/users", (req, res) -> {
 			return "Hello : " + req.queryParams("name") + ", age : " + req.queryParams("age");
 		});
 
-		post("/hello", (req, res) -> {
+		post("/users", (req, res) -> {
+			//User user = new User(req.queryParams("name"), req.queryParams("age"));
+			User user = new User();
+			user.setAge(req.queryParams("age"));
+			user.setName(req.queryParams("name"));
+			users.add(user);
 			Map<String, Object> model = new HashMap<String, Object>();
-			model.put("name", req.queryParams("name"));
-			model.put("age", req.queryParams("age"));
+			model.put("users", users);
 
-			return render(model, "result.html");
+			return render(model, "resultmany.html");
 		});
 	}
 
