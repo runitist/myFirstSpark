@@ -11,4 +11,5 @@ repositories {
 
 dependencies {
 	compile "com.sparkjava:spark-core:2.8.0" 
+	compile "com.sparkjava:spark-template-handlebars:2.7.1" //maven의 groupid, artifactid, version 순서로 :로 구분됨
 }
